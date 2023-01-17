@@ -3,29 +3,27 @@ import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const Single = props => {
+export const SinglePlanets = props => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
-	
-	const [personajes, setPersonajes]=useState([])
+
+    const [planets, setPlanets]=useState([])
 	//guardar el fetch dentro de una funcion
-	function getInfoDePj() { 
+	function getInfoDePlanets() { 
 		// https://www.swapi.tech/api/people/
-		fetch("https://www.swapi.tech/api/people/"+params.theid)
+		fetch("https://www.swapi.tech/api/planets/"+params.theid)
 		.then(res => res.json())
-		.then(data => setPersonajes(data))
+		.then(data => setPlanets(data.properties.results))
 		.catch(err => console.error(err))
 	}
 	
 		useEffect(()=>{
-			getInfoDePj();
+			getInfoDePlanets();
 		},[])
-
-		console.log(personajes);
 
 	return (
 		<div className="jumbotron">
-			<h1 className="display-4">Detalles de personaje: {params.theid}</h1>
+			<h1 className="display-4">Detalles de planets: {params.theid}</h1>
 
 			<hr className="my-4" />
 
