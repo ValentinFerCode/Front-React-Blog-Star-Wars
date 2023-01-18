@@ -1,12 +1,14 @@
 //pj, planetas y vehiculos. Entendida la API swap puedo hacer fetch
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";//1. llamar al hook useContext
 import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import Cards from "../component/cards.js"
+import {Context} from "../store/appContext.js"//2. importo el contexto
 
 export const Home = () => {
 
-
+	const {store}=useContext(Context); //3. Activo el uso del contexto y desestructuro las o la propiedades que quiero utilizar. Para verificar hacemos console.log()
+	console.log(store.demo);
  	const [personajes, setPersonajes]=useState([])	
 	//guardar el fetch dentro de una funcion
 	function obtenerInfoPersonajes() {
@@ -25,9 +27,8 @@ export const Home = () => {
 	//todo lo que se ve se coloca en return
 	return(
 	<>
-	<Cards/>
 	<div className="text-center mt-5">
 		{personajes.map((props)=><Cards nombre={props.name} id={props.uid} key={props.uid}/>)}
 	</div>
 	</>
-);}
+);} 

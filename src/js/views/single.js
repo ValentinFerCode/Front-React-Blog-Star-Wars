@@ -1,19 +1,19 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react"; //1ro importar useContext
 import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
-import { Context } from "../store/appContext";
+import { Context } from "../store/appContext"; //2do importamos el contexto
 
 export const Single = props => {
-	const { store, actions } = useContext(Context);
+	const { store, actions } = useContext(Context); //3ro ejecutamos el hook useContext
 	const params = useParams();
-	
-	const [personajes, setPersonajes]=useState([])
+	console.log(store.demo);
+	const [infoPersonaje, setInfoPersonaje]=useState({})
 	//guardar el fetch dentro de una funcion
 	function getInfoDePj() { 
 		// https://www.swapi.tech/api/people/
 		fetch("https://www.swapi.tech/api/people/"+params.theid)
 		.then(res => res.json())
-		.then(data => setPersonajes(data))
+		.then(data => setInfoPersonaje(data.result))
 		.catch(err => console.error(err))
 	}
 	
@@ -21,20 +21,54 @@ export const Single = props => {
 			getInfoDePj();
 		},[])
 
-		console.log(personajes);
+		console.log(infoPersonaje);
 
 	return (
-		<div className="jumbotron">
-			<h1 className="display-4">Detalles de personaje: {params.theid}</h1>
+		<div className="jumbotron">	
 
-			<hr className="my-4" />
+			<div className="card mb-3" style={{maxWidth: "540px"}}>
+			
+			<div className="row g-0">
+				<div className="col-md-4">
+				<img src="..." className="img-fluid rounded-start" alt="..."/>
+				</div>
+				<div className="col-md-8">
+				<div className="card-body">
+					<h5 className="card-title">{infoPersonaje.properties?.name}</h5>
+					<p className="card-text">{infoPersonaje.description}</p>
+					<p className="card-text"><small>{infoPersonaje.properties?.height}</small></p>
+				</div>
+				</div>
+
+				<div class="mb-4">
+					<label for="exampleFormControlInput1" class="form-label">Email address</label>
+					</div>
+
+					<div class="h4 pb-2 mb-4 text-danger border-bottom border-danger">
+					</div>	
+			</div>
 
 			<Link to="/">
 				<span className="btn btn-primary btn-lg" href="#" role="button">
 					Back home
 				</span>
 			</Link>
-		</div>
+
+
+
+			</div>
+
+
+
+
+
+	    </div>
+
+
+
+
+
+
 	);
 };
 
