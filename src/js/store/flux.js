@@ -7,7 +7,8 @@ const getState = ({
         store: {
             //const [personajes, setPersonajes]=useState([])
             personajes: [],
-            favorite: []
+            personaje: {},
+            favorites: []
 
         },
         actions: {
@@ -41,34 +42,34 @@ const getState = ({
                 .then(res => res.json())
                 .then(data => setInfoPersonaje(data.result))//es result porque hace referencia a solo 1 personaje
                 .catch(err => console.error(err))
-            }
+            },
 
             
 
-            // agregarFavorito: (name) => {
-            // console.log(name),
-            // const store = getStore():
-            // setStore({
-            //     favorites: [...store.favorites, name]
-            // })
-
-            // }
-            changeColor: (index, color) => {
-                //get the store
+            agregarFavoritos: (name) => {
+                console.log(name);
                 const store = getStore();
-
-            //     //we have to loop the entire demo array to look for the respective index
-            //     //and change its color
-                const demo = store.demo.map((elm, i) => {
-                    if (i === index) elm.background = color;
-                    return elm;
-                });
-
-            //     //reset the global store
                 setStore({
-                    demo: demo
-                });
-            }
+                    favorites:[...store.favorites,name]
+                })
+                console.log(store.favorites);
+            },
+            // changeColor: (index, color) => {
+            //     //get the store
+            //     const store = getStore();
+
+            // //     //we have to loop the entire demo array to look for the respective index
+            // //     //and change its color
+            //     const demo = store.demo.map((elm, i) => {
+            //         if (i === index) elm.background = color;
+            //         return elm;
+            //     });
+
+            // //     //reset the global store
+            //     // setStore({
+            //     //     demo: demo
+            //     // });
+            // }
         }
     };
 };
