@@ -13,7 +13,7 @@ export const Single = props => {
 		// https://www.swapi.tech/api/people/
 		fetch("https://www.swapi.tech/api/people/"+params.theid)
 		.then(res => res.json())
-		.then(data => setInfoPersonaje(data.result))
+		.then(data => setInfoPersonaje(data.result))//es result porque hace referencia a solo 1 personaje
 		.catch(err => console.error(err))
 	}
 	
@@ -30,22 +30,18 @@ export const Single = props => {
 			
 			<div className="row g-0">
 				<div className="col-md-4">
-				<img src="..." className="img-fluid rounded-start" alt="..."/>
+				<img src="https://starwars-visualguide.com/assets/img/characters/1.jpg" className="img-fluid rounded-start" alt="..."/>
 				</div>
 				<div className="col-md-8">
 				<div className="card-body">
 					<h5 className="card-title">{infoPersonaje.properties?.name}</h5>
 					<p className="card-text">{infoPersonaje.description}</p>
-					<p className="card-text"><small>{infoPersonaje.properties?.height}</small></p>
+					<p className="card-text"><small>Height: {infoPersonaje.properties?.height}cm</small></p>
+					<p className="card-text"><small>Mass: {infoPersonaje.properties?.mass}kg</small></p>
+					<p className="card-text"><small>Birth-Year: {infoPersonaje.properties?.birth_year}</small></p>
 				</div>
 				</div>
-
-				<div class="mb-4">
-					<label for="exampleFormControlInput1" class="form-label">Email address</label>
-					</div>
-
-					<div class="h4 pb-2 mb-4 text-danger border-bottom border-danger">
-					</div>	
+				<div class="h4 pb-2 mb-4 text-danger border-bottom border-danger"></div>	
 			</div>
 
 			<Link to="/">

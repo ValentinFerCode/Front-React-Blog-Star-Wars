@@ -9,7 +9,7 @@ export const Home = () => {
 
 	const {store}=useContext(Context); //3. Activo el uso del contexto y desestructuro las o la propiedades que quiero utilizar. Para verificar hacemos console.log()
 	console.log(store.demo);
- 	const [personajes, setPersonajes]=useState([])	
+ 	// const [personajes, setPersonajes]=useState([])	
 	//guardar el fetch dentro de una funcion
 	function obtenerInfoPersonajes() {
 	fetch("https://www.swapi.tech/api/people/")
