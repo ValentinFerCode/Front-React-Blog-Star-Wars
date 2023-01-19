@@ -5,7 +5,7 @@ import { Context } from "../store/appContext.js";
 
 export const Navbar = () => {
 	// console.log(store.favorite);
-	// const {store, actions}=useContext(Context);
+	const {store, actions}=useContext(Context);
 
 	// const [contadorLikes, setContadorLikes] = useState("")
 	
@@ -32,10 +32,10 @@ export const Navbar = () => {
 						<button type="button" className="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 							Favourites
 							
-							<span className="text-danger">
+							{/* <span className="text-danger">
                             {
                             " " + contadorLikes
-                        	}</span>
+                        	}</span> */}
 
 						</button>
 						<ul className="dropdown-menu dropdown-menu-end">

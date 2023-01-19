@@ -6,6 +6,7 @@ const getState = ({
     return {
         store: {
             //const [personajes, setPersonajes]=useState([])
+            likesGuardados: [],
             personajes: [],
             personaje: {},
             favorites: []
