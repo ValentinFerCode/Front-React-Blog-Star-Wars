@@ -30,7 +30,7 @@ export const Navbar = () => {
 				<div className="ml-auto">	
 					<div className="btn-group">
 						<button type="button" className="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-							Favourites
+							Favorites
 							
 							{/* <span className="text-danger">
                             {
