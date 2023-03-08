@@ -1,0 +1,19 @@
+.btnEliminar button {
+    visibility: hidden;
+}
+
+.btnEliminar:hover button {
+    visibility: visible;
+}
+
+.favorite-button {
+    margin-top: 10px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.favorite-button.active {
+    color: yellow;
+    opacity: 0.5;
+}

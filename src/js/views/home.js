@@ -27,10 +27,19 @@ export const Home = () => {
 	// console.log(store.personajes);
 
 	//todo lo que se renderiza se coloca en return
+	console.log(store.personajes);
 	return(
 	<>
-		<div className="container mx-auto d-flex row justify-content-center">
-			{store.personajes.map((props)=><Cards nombre={props.name} id={props.uid} key={props.uid}/>)}
-		</div>
+<div className="container-fluid" style={{backgroundColor: 'black', backgroundImage: "url('https://wallpapercave.com/wp/wp9267865.jpg')", backgroundSize: "cover"}}>
+  <div className="container mx-auto overflow-auto">
+	<div className="d-flex flex-row flex-nowrap">
+    {store.personajes.map((item, index) => (
+      <div className="card mx-2 mb-4" style={{backgroundColor: "transparent", minWidth: "18rem"}} key={index}>
+        <Cards name={item.name} id={index + 1} />
+      </div>
+    ))}
+	</div>
+  </div>
+</div>
 	</>
 );}
